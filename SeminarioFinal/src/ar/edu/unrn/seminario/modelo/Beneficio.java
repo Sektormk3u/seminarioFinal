@@ -1,4 +1,4 @@
-package ar.edu.seminario.modelo;
+package ar.edu.unrn.seminario.modelo;
 
 public class Beneficio {
 
