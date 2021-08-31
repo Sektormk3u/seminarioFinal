@@ -2,6 +2,8 @@ package ar.edu.unrn.seminario.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -79,6 +81,15 @@ public class VentanaPrincipal extends JFrame {
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
+		
+		altaRecolector.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaAltaRecolector ventanaAltaRecolector = new VentanaAltaRecolector();
+				ventanaAltaRecolector.setVisible(true);
+			}
+		});
 	}
 
 }
