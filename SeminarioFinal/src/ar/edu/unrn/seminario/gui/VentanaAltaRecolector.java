@@ -88,6 +88,7 @@ public class VentanaAltaRecolector extends JFrame {
 		JButton botonAceptar = new JButton("Aceptar");
 		botonAceptar.setBounds(77, 204, 89, 23);
 		panel.add(botonAceptar);
+	
 		
 		JButton botonCanelar = new JButton("Cancelar");
 		botonCanelar.setBounds(248, 204, 89, 23);
