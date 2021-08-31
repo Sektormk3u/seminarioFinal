@@ -15,8 +15,7 @@ public class DataBaseApi implements IApi{
 		try {
 			this.dbConn = DriverManager.getConnection(url, user, password);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Verificar siguiente error:"+e.getMessage());
 		}
 	}
 	

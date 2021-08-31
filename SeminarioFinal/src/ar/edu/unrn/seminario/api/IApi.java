@@ -9,7 +9,7 @@ public interface IApi {
 	 * ABMDueñoViviendaDTO
 	 * ABMCampañaDTO
 	 * ListaCatalogo - return lista beneficioDTO
-	 * 
+	 * falta completar
 	 */
 	
 	void setupBaseDeDatos(String usuario, String contraseña, String nombreBD);
