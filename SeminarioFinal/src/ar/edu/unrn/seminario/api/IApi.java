@@ -13,4 +13,6 @@ public interface IApi {
 	 */
 	
 	void setupBaseDeDatos(String usuario, String contraseña, String nombreBD);
+	
+	void registrarDueñoVivienda(String nombre, String apellido, String dni);
 }

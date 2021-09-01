@@ -18,5 +18,11 @@ public class DataBaseApi implements IApi{
 			System.out.println("Verificar siguiente error:"+e.getMessage());
 		}
 	}
+
+	@Override
+	public void registrarDueñoVivienda(String nombre, String apellido, String dni) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
