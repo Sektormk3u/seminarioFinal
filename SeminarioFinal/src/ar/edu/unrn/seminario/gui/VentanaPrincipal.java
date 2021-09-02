@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import ar.edu.unrn.seminario.api.DataBaseApi;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -15,6 +18,7 @@ import javax.swing.JMenuItem;
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
+	private DataBaseApi api; 
 
 	/**
 	 * Launch the application.
@@ -95,7 +99,7 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaAltaDueñoVivienda ventanaAltaDueñovivienda = new VentanaAltaDueñoVivienda();
+				VentanaAltaDueñoVivienda ventanaAltaDueñovivienda = new VentanaAltaDueñoVivienda(api);
 				ventanaAltaDueñovivienda.setVisible(true);
 			}
 		});

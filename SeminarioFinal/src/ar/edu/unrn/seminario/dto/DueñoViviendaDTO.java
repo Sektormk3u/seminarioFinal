@@ -1,5 +1,12 @@
 package ar.edu.unrn.seminario.dto;
 
-public class DueñoViviendaDTO {
 
+public class DueñoViviendaDTO extends PersonaDTO{
+
+private Integer puntaje;
+	
+	public DueñoViviendaDTO(String nombre, String apellido, String dni) {
+		super(nombre, apellido, dni);
+		this.puntaje = 0;
+	}
 }

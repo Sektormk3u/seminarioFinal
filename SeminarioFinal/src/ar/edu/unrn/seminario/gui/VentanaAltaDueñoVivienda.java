@@ -6,22 +6,27 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import ar.edu.unrn.seminario.api.DataBaseApi;
+import ar.edu.unrn.seminario.dto.DomicilioDTO;
+import ar.edu.unrn.seminario.dto.DueñoViviendaDTO;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class VentanaAltaDueñoVivienda extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField textFieldNombre;
+	private JTextField textFieldApellido;
+	private JTextField textFieldDNI;
+	private JTextField textFieldCalle;
+	private JTextField textFieldNumero;
+	private JTextField textFieldBarrio;
 
 	/**
 	 * Launch the application.
@@ -30,7 +35,7 @@ public class VentanaAltaDueñoVivienda extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaAltaDueñoVivienda frame = new VentanaAltaDueñoVivienda();
+					VentanaAltaDueñoVivienda frame = new VentanaAltaDueñoVivienda(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,89 +46,106 @@ public class VentanaAltaDueñoVivienda extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * 
+	 * @param api
 	 */
-	public VentanaAltaDueñoVivienda() {
+	public VentanaAltaDueñoVivienda(DataBaseApi api) {
 		setTitle("Alta Due\u00F1o Vivienda");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 515, 356);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setBounds(10, 24, 46, 14);
-		contentPane.add(lblNewLabel);
-		
-		textField = new JTextField();
-		textField.setBounds(53, 21, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel_1 = new JLabel("Apellido:");
-		lblNewLabel_1.setBounds(10, 62, 46, 14);
-		contentPane.add(lblNewLabel_1);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(53, 59, 86, 20);
-		contentPane.add(textField_1);
-		
+
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setBounds(10, 86, 80, 14);
+		contentPane.add(lblNombre);
+
+		textFieldNombre = new JTextField();
+		textFieldNombre.setBounds(100, 83, 122, 20);
+		contentPane.add(textFieldNombre);
+		textFieldNombre.setColumns(10);
+
+		JLabel lblApellido = new JLabel("Apellido:");
+		lblApellido.setBounds(10, 124, 67, 14);
+		contentPane.add(lblApellido);
+
+		textFieldApellido = new JTextField();
+		textFieldApellido.setColumns(10);
+		textFieldApellido.setBounds(100, 121, 122, 20);
+		contentPane.add(textFieldApellido);
+
 		JLabel lblDni = new JLabel("DNI:");
-		lblDni.setBounds(10, 97, 46, 14);
+		lblDni.setBounds(10, 159, 67, 14);
 		contentPane.add(lblDni);
-		
-		JLabel lblNewLabel_2 = new JLabel("Calle:");
-		lblNewLabel_2.setBounds(10, 134, 46, 14);
-		contentPane.add(lblNewLabel_2);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(53, 94, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(53, 131, 86, 20);
-		contentPane.add(textField_3);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("Numero:");
-		lblNewLabel_2_1.setBounds(10, 173, 46, 14);
-		contentPane.add(lblNewLabel_2_1);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(53, 170, 86, 20);
-		contentPane.add(textField_4);
-		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(231, 21, 86, 20);
-		contentPane.add(textField_5);
-		
-		JLabel lblNewLabel_2_1_1 = new JLabel("Piso:");
-		lblNewLabel_2_1_1.setBounds(197, 24, 46, 14);
-		contentPane.add(lblNewLabel_2_1_1);
-		
-		JLabel lblNewLabel_2_1_1_1 = new JLabel("Numero Departamento:");
-		lblNewLabel_2_1_1_1.setBounds(197, 62, 129, 14);
-		contentPane.add(lblNewLabel_2_1_1_1);
-		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(317, 59, 86, 20);
-		contentPane.add(textField_6);
-		
-		JButton btnNewButton = new JButton("Aceptar");
-		btnNewButton.setBounds(129, 227, 89, 23);
-		contentPane.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Cancelar");
-		btnNewButton_1.addActionListener(new ActionListener() {
+
+		JLabel lblCalle = new JLabel("Calle:");
+		lblCalle.setBounds(247, 86, 60, 14);
+		contentPane.add(lblCalle);
+
+		textFieldDNI = new JTextField();
+		textFieldDNI.setBounds(100, 156, 122, 20);
+		contentPane.add(textFieldDNI);
+		textFieldDNI.setColumns(10);
+
+		textFieldCalle = new JTextField();
+		textFieldCalle.setColumns(10);
+		textFieldCalle.setBounds(317, 83, 144, 20);
+		contentPane.add(textFieldCalle);
+
+		JLabel lblNumero = new JLabel("Numero:");
+		lblNumero.setBounds(247, 124, 73, 14);
+		contentPane.add(lblNumero);
+
+		textFieldNumero = new JTextField();
+		textFieldNumero.setColumns(10);
+		textFieldNumero.setBounds(317, 121, 73, 20);
+		contentPane.add(textFieldNumero);
+
+		JButton botonAceptar = new JButton("Aceptar");
+		botonAceptar.setBounds(110, 283, 89, 23);
+		contentPane.add(botonAceptar);
+
+		JButton botonCanelar = new JButton("Cancelar");
+		botonCanelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 			}
 		});
-		btnNewButton_1.setBounds(237, 227, 89, 23);
-		contentPane.add(btnNewButton_1);
+		botonCanelar.setBounds(261, 283, 89, 23);
+		contentPane.add(botonCanelar);
+
+		JLabel lblBarrio = new JLabel("Barrio:");
+		lblBarrio.setBounds(247, 159, 46, 14);
+		contentPane.add(lblBarrio);
+
+		textFieldBarrio = new JTextField();
+		textFieldBarrio.setBounds(317, 156, 144, 20);
+		contentPane.add(textFieldBarrio);
+		textFieldBarrio.setColumns(10);
+
+		JLabel lblInfoUsuario = new JLabel("Informacion del usuario");
+		lblInfoUsuario.setBounds(58, 39, 164, 14);
+		contentPane.add(lblInfoUsuario);
+
+		JLabel lblInfoVivienda = new JLabel("Informacion de la vivienda");
+		lblInfoVivienda.setBounds(299, 39, 200, 14);
+		contentPane.add(lblInfoVivienda);
+
+		botonAceptar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//Datos domicilio
+				DomicilioDTO domicilio = new DomicilioDTO(textFieldCalle.getText(), textFieldBarrio.getText(),
+						Integer.parseInt(textFieldNumero.getText()));
+				//Datos dueño
+				DueñoViviendaDTO dueño = new DueñoViviendaDTO(textFieldNombre.getText(), textFieldApellido.getText(),
+						textFieldDNI.getText());
+				//Registro a BD
+				api.registrarVivienda(dueño, domicilio, new Date());
+			}
+		});
 	}
 }

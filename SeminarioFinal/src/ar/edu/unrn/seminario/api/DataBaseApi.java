@@ -3,6 +3,11 @@ package ar.edu.unrn.seminario.api;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Date;
+
+import ar.edu.unrn.seminario.dto.BeneficioDTO;
+import ar.edu.unrn.seminario.dto.DomicilioDTO;
+import ar.edu.unrn.seminario.dto.DueñoViviendaDTO;
 
 public class DataBaseApi implements IApi{
 
@@ -19,8 +24,24 @@ public class DataBaseApi implements IApi{
 		}
 	}
 
+	
+
 	@Override
-	public void registrarDueñoVivienda(String nombre, String apellido, String dni) {
+	public void registrarRecolector(String nombre, String apellido, String dni, String email) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void canjearPremio(DueñoViviendaDTO dueñoVivienda, BeneficioDTO beneficio) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void registrarVivienda(DueñoViviendaDTO dueño, DomicilioDTO domicilio, Date fechaRegistro) {
 		// TODO Auto-generated method stub
 		
 	}
