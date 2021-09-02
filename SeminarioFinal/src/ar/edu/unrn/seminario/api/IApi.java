@@ -6,7 +6,7 @@ import java.util.List;
 import ar.edu.unrn.seminario.dto.BeneficioDTO;
 import ar.edu.unrn.seminario.dto.DomicilioDTO;
 import ar.edu.unrn.seminario.dto.DueñoViviendaDTO;
-import ar.edu.unrn.seminario.exceptions.CamposNulos;
+import ar.edu.unrn.seminario.exceptions.CamposErroneos;
 import ar.edu.unrn.seminario.exceptions.CamposVacios;
 
 public interface IApi {
@@ -19,7 +19,7 @@ public interface IApi {
 	void setupBaseDeDatos(String usuario, String contraseña, String nombreBD);
 
 	void registrarVivienda(DueñoViviendaDTO dueño, DomicilioDTO domicilio, Date fechaRegistro)
-			throws CamposNulos, CamposVacios;
+			throws CamposErroneos, CamposVacios;
 
 	void registrarRecolector(String nombre, String apellido, String dni, String email);
 
@@ -27,5 +27,5 @@ public interface IApi {
 
 	void registrarDueñoVivienda(String nombreDueño, String apellidoDueño,
 			String dni, String calle, String barrio,
-			int numeroVivienda, Date fechaRegistro) throws CamposNulos, CamposVacios;
+			int numeroVivienda, Date fechaRegistro) throws CamposErroneos, CamposVacios;
 }

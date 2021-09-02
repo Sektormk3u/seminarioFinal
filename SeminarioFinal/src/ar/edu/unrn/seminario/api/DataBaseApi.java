@@ -8,7 +8,7 @@ import java.util.Date;
 import ar.edu.unrn.seminario.dto.BeneficioDTO;
 import ar.edu.unrn.seminario.dto.DomicilioDTO;
 import ar.edu.unrn.seminario.dto.DueñoViviendaDTO;
-import ar.edu.unrn.seminario.exceptions.CamposNulos;
+import ar.edu.unrn.seminario.exceptions.CamposErroneos;
 import ar.edu.unrn.seminario.exceptions.CamposVacios;
 import ar.edu.unrn.seminario.modelo.DueñoVivienda;
 
@@ -51,7 +51,7 @@ public class DataBaseApi implements IApi{
 
 	@Override
 	public void registrarDueñoVivienda(String nombreDueño, String apellidoDueño, String dni, String calle,
-			String barrio, int numeroVivienda, Date fechaRegistro) throws CamposNulos, CamposVacios {
+			String barrio, int numeroVivienda, Date fechaRegistro) throws CamposErroneos, CamposVacios {
 		// TODO Auto-generated method stub
 		
 	}

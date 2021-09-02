@@ -6,7 +6,7 @@ import java.util.Date;
 import ar.edu.unrn.seminario.dto.BeneficioDTO;
 import ar.edu.unrn.seminario.dto.DomicilioDTO;
 import ar.edu.unrn.seminario.dto.DueñoViviendaDTO;
-import ar.edu.unrn.seminario.exceptions.CamposNulos;
+import ar.edu.unrn.seminario.exceptions.CamposErroneos;
 import ar.edu.unrn.seminario.exceptions.CamposVacios;
 import ar.edu.unrn.seminario.modelo.Domicilio;
 import ar.edu.unrn.seminario.modelo.DueñoVivienda;
@@ -28,7 +28,7 @@ public class MemoryApi implements IApi{
 			DueñoVivienda d1 = new DueñoVivienda("Leonel", "Mercado", "123");
 			DueñoVivienda d2 = new DueñoVivienda("Ivan", "Scheck", "456");
 			DueñoVivienda d3 = new DueñoVivienda("Leonardo", "Incaminato", "789");
-		} catch (CamposNulos e) {
+		} catch (CamposErroneos e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (CamposVacios e) {
@@ -59,7 +59,7 @@ public class MemoryApi implements IApi{
 
 	@Override
 	public void registrarDueñoVivienda(String nombreDueño, String apellidoDueño, String dni, String calle,
-			String barrio, int numeroVivienda, Date fechaRegistro) throws CamposNulos, CamposVacios {
+			String barrio, int numeroVivienda, Date fechaRegistro) throws CamposErroneos, CamposVacios {
 		DueñoVivienda dueño = new DueñoVivienda(nombreDueño, apellidoDueño, dni);
 		listaDueños.add(dueño);
 		Domicilio domicilio = new Domicilio(calle, barrio, numeroVivienda);

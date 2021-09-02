@@ -11,7 +11,7 @@ import ar.edu.unrn.seminario.api.DataBaseApi;
 import ar.edu.unrn.seminario.api.IApi;
 import ar.edu.unrn.seminario.dto.DomicilioDTO;
 import ar.edu.unrn.seminario.dto.DueñoViviendaDTO;
-import ar.edu.unrn.seminario.exceptions.CamposNulos;
+import ar.edu.unrn.seminario.exceptions.CamposErroneos;
 import ar.edu.unrn.seminario.exceptions.CamposVacios;
 
 import javax.swing.JLabel;
@@ -35,7 +35,6 @@ public class VentanaAltaDueñoVivienda extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	
 
 	/**
 	 * Create the frame.
@@ -125,30 +124,29 @@ public class VentanaAltaDueñoVivienda extends JFrame {
 		JLabel lblInfoVivienda = new JLabel("Informacion de la vivienda");
 		lblInfoVivienda.setBounds(299, 39, 200, 14);
 		contentPane.add(lblInfoVivienda);
-		
 
 		botonAceptar.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-					//Registro a BD
-					try {
-						api.registrarDueñoVivienda(textFieldNombre.getText(), textFieldApellido.getText(),
-								textFieldDNI.getText(), textFieldCalle.getText(), textFieldBarrio.getText(),
-								Integer.parseInt(textFieldNumero.getText()), new Date());
-						JOptionPane.showMessageDialog(null, "No se aceptan letras en campo Numero de la Calle", "Exito", JOptionPane.INFORMATION_MESSAGE);
-					}
-					catch (CamposVacios e1) {
-						JOptionPane.showMessageDialog(null, "No se aceptan campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-						e1.printStackTrace();
-					} catch (CamposNulos e1) {
-						JOptionPane.showMessageDialog(null, "No se aceptan campos nulos","Error" , JOptionPane.ERROR_MESSAGE);
-						e1.printStackTrace();
-					}
-					 catch (NumberFormatException e1) {
-							JOptionPane.showMessageDialog(null, "No se aceptan letras en campo Numero de la Calle", "Error", JOptionPane.ERROR_MESSAGE);
-							e1.printStackTrace();
-					 }
+			public void actionPerformed(ActionEvent e) { // Registro a BD
+				try {
+
+					api.registrarDueñoVivienda(textFieldNombre.getText(), textFieldApellido.getText(),
+							textFieldDNI.getText(), textFieldCalle.getText(), textFieldBarrio.getText(),
+							Integer.parseInt(textFieldNumero.getText()), new Date());
+					JOptionPane.showMessageDialog(null, "Registrado", "Exito", JOptionPane.INFORMATION_MESSAGE);
+					dispose();
+				} catch (CamposErroneos e1) { // pendiente de implementacion
+					JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+					e1.printStackTrace();
+				} catch (CamposVacios e1) {
+					JOptionPane.showMessageDialog(null, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+					e1.printStackTrace();
+				} catch (NumberFormatException e1) {
+					JOptionPane.showMessageDialog(null, "Verificar campo NUMERO DE CALLE", "Error",
+							JOptionPane.ERROR_MESSAGE);
+					e1.printStackTrace();
+				}
 			}
 		});
 	}
