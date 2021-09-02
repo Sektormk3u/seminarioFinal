@@ -9,11 +9,11 @@ public class Recolector extends Persona {
 
 	public Recolector(String nombre, String apellido, String dni, String email) throws CamposNulos, CamposVacios {
 		super(nombre, apellido, dni);
-		if (!camposNulos(email)) {
-			throw new CamposNulos();
+		if (camposNulos(email)) {
+			throw new CamposNulos("Verificar, campos nulos");
 		}
-		if (!camposVacios(email)) {
-			throw new CamposVacios();
+		if (camposVacios(email)) {
+			throw new CamposVacios("Verificar, campos vacios");
 		}
 		this.email = email;
 	}

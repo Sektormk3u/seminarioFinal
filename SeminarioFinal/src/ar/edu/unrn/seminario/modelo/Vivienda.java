@@ -1,6 +1,6 @@
 package ar.edu.unrn.seminario.modelo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Vivienda {
 
@@ -14,9 +14,7 @@ public class Vivienda {
 		this.fechaRegistro = fechaRegistro;
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public boolean dueñoYaExiste (DueñoVivienda dueño) {
+		return this.equals(dueño);
 	}
-
 }

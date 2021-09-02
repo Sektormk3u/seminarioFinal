@@ -6,7 +6,7 @@ public class Domicilio {
 	private String barrio;
 	private Integer numero;
 	
-	public Domicilio(String calle, String barrio, Integer numero, String latitud, String longitud) {
+	public Domicilio(String calle, String barrio, Integer numero) {
 		this.calle=calle;
 		this.barrio=barrio;
 		this.numero=numero;

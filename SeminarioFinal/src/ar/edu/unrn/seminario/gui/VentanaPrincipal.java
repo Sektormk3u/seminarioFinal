@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import ar.edu.unrn.seminario.api.DataBaseApi;
+import ar.edu.unrn.seminario.api.IApi;
+import ar.edu.unrn.seminario.api.MemoryApi;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -18,7 +20,6 @@ import javax.swing.JMenuItem;
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
-	private DataBaseApi api; 
 
 	/**
 	 * Launch the application.
@@ -27,7 +28,8 @@ public class VentanaPrincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPrincipal frame = new VentanaPrincipal();
+					IApi api = new MemoryApi();
+					VentanaPrincipal frame = new VentanaPrincipal(api);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +41,7 @@ public class VentanaPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaPrincipal() {
+	public VentanaPrincipal(IApi api) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 

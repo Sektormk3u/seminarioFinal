@@ -10,11 +10,11 @@ public class Persona {
 	private String dni;
 
 	public Persona(String nombre, String apellido, String dni) throws CamposNulos, CamposVacios {
-		if (!camposNulos(nombre) || !camposNulos(dni) || !camposNulos(apellido)) {
-			throw new CamposNulos();
+		if (camposNulos(nombre) || camposNulos(dni) || camposNulos(apellido)) {
+			throw new CamposNulos("Verificar, campos nulos");
 		}
-		if (!camposVacios(dni) || !camposVacios(nombre) || !camposVacios(apellido)) {
-			throw new CamposVacios();
+		if (camposVacios(dni) || camposVacios(nombre) || camposVacios(apellido)) {
+			throw new CamposVacios("Verificar, campos vacios");
 		}
 		this.nombre = nombre;
 		this.apellido = apellido;

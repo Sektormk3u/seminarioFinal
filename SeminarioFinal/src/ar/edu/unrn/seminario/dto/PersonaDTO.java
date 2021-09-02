@@ -11,4 +11,18 @@ public class PersonaDTO {
 		this.nombre = nombre;
 		this.dni = dni;
 	}
+
+	protected String getApellido() {
+		return apellido;
+	}
+
+	protected String getNombre() {
+		return nombre;
+	}
+
+	protected String getDni() {
+		return dni;
+	}
+	
+	
 }

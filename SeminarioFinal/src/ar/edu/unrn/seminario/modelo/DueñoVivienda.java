@@ -21,4 +21,12 @@ public class DueñoVivienda extends Persona {
 		
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		//hacer logica
+		return false;
+	}
+	
+	
+	
 }

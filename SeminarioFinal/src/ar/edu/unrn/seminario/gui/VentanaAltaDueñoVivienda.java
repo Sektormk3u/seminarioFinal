@@ -8,10 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import ar.edu.unrn.seminario.api.DataBaseApi;
+import ar.edu.unrn.seminario.api.IApi;
 import ar.edu.unrn.seminario.dto.DomicilioDTO;
 import ar.edu.unrn.seminario.dto.DueñoViviendaDTO;
+import ar.edu.unrn.seminario.exceptions.CamposNulos;
+import ar.edu.unrn.seminario.exceptions.CamposVacios;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -31,25 +35,14 @@ public class VentanaAltaDueñoVivienda extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaAltaDueñoVivienda frame = new VentanaAltaDueñoVivienda(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 * 
 	 * @param api
 	 */
-	public VentanaAltaDueñoVivienda(DataBaseApi api) {
+	public VentanaAltaDueñoVivienda(IApi api) {
 		setTitle("Alta Due\u00F1o Vivienda");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 515, 356);
@@ -132,19 +125,30 @@ public class VentanaAltaDueñoVivienda extends JFrame {
 		JLabel lblInfoVivienda = new JLabel("Informacion de la vivienda");
 		lblInfoVivienda.setBounds(299, 39, 200, 14);
 		contentPane.add(lblInfoVivienda);
+		
 
 		botonAceptar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//Datos domicilio
-				DomicilioDTO domicilio = new DomicilioDTO(textFieldCalle.getText(), textFieldBarrio.getText(),
-						Integer.parseInt(textFieldNumero.getText()));
-				//Datos dueño
-				DueñoViviendaDTO dueño = new DueñoViviendaDTO(textFieldNombre.getText(), textFieldApellido.getText(),
-						textFieldDNI.getText());
-				//Registro a BD
-				api.registrarVivienda(dueño, domicilio, new Date());
+					//Registro a BD
+					try {
+						api.registrarDueñoVivienda(textFieldNombre.getText(), textFieldApellido.getText(),
+								textFieldDNI.getText(), textFieldCalle.getText(), textFieldBarrio.getText(),
+								Integer.parseInt(textFieldNumero.getText()), new Date());
+						JOptionPane.showMessageDialog(null, "No se aceptan letras en campo Numero de la Calle", "Exito", JOptionPane.INFORMATION_MESSAGE);
+					}
+					catch (CamposVacios e1) {
+						JOptionPane.showMessageDialog(null, "No se aceptan campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+						e1.printStackTrace();
+					} catch (CamposNulos e1) {
+						JOptionPane.showMessageDialog(null, "No se aceptan campos nulos","Error" , JOptionPane.ERROR_MESSAGE);
+						e1.printStackTrace();
+					}
+					 catch (NumberFormatException e1) {
+							JOptionPane.showMessageDialog(null, "No se aceptan letras en campo Numero de la Calle", "Error", JOptionPane.ERROR_MESSAGE);
+							e1.printStackTrace();
+					 }
 			}
 		});
 	}

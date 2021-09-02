@@ -1,6 +1,10 @@
 package ar.edu.unrn.seminario.dto;
 
 
+/**
+ * @author Sektor
+ *
+ */
 public class DueñoViviendaDTO extends PersonaDTO{
 
 private Integer puntaje;
@@ -9,4 +13,6 @@ private Integer puntaje;
 		super(nombre, apellido, dni);
 		this.puntaje = 0;
 	}
+	
+	
 }
