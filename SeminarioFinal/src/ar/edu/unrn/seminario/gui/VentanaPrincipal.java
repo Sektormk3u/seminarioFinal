@@ -16,6 +16,7 @@ import ar.edu.unrn.seminario.api.MemoryApi;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JSeparator;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -62,6 +63,12 @@ public class VentanaPrincipal extends JFrame {
 
 		JMenuItem altaPedidoResiduos = new JMenuItem("Generar pedido de retiro de residuos");
 		menuUsuarios.add(altaPedidoResiduos);
+		
+		JSeparator separator = new JSeparator();
+		menuUsuarios.add(separator);
+		
+		JMenuItem menuAgregarVivienda = new JMenuItem("Agregar vivienda a usuario existente");
+		menuUsuarios.add(menuAgregarVivienda);
 
 		JMenu menuRecolectores = new JMenu("Recolectores");
 		menuBar.add(menuRecolectores);
@@ -87,6 +94,7 @@ public class VentanaPrincipal extends JFrame {
 
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
+		
 
 		altaRecolector.addActionListener(new ActionListener() {
 
@@ -103,6 +111,16 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				VentanaAltaDueñoVivienda ventanaAltaDueñovivienda = new VentanaAltaDueñoVivienda(api);
 				ventanaAltaDueñovivienda.setVisible(true);
+			}
+		});
+		
+		menuAgregarVivienda.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AgregarViviendaElegirUsuario elegirUsuario = new AgregarViviendaElegirUsuario(api);
+				elegirUsuario.setVisible(true);
+				
 			}
 		});
 	}

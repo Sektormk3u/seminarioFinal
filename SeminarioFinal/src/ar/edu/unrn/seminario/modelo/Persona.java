@@ -21,7 +21,7 @@ public class Persona {
 		this.dni = dni;
 	}
 
-	protected boolean camposErroneos(String campo) { //ver como verificar - pendiente
+	protected boolean camposErroneos(String campo) { // ver como verificar - pendiente
 		if (campo == null) {
 			return true;
 		}
@@ -33,5 +33,16 @@ public class Persona {
 			return true;
 		}
 		return false;
+	}
+
+	public String obtenerDNI() {
+		return dni;
+	}
+	
+	public String obtenerNombre() {
+		return nombre;
+	}
+	public String obtenerApellido() {
+		return apellido;
 	}
 }

@@ -55,5 +55,21 @@ public class DataBaseApi implements IApi{
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+	@Override
+	public boolean dueñoExiste(String dni) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+	@Override
+	public DueñoViviendaDTO obtenerUsuario(String dni) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

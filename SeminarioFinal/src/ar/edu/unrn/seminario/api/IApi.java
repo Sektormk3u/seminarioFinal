@@ -28,4 +28,8 @@ public interface IApi {
 	void registrarDueñoVivienda(String nombreDueño, String apellidoDueño,
 			String dni, String calle, String barrio,
 			int numeroVivienda, Date fechaRegistro) throws CamposErroneos, CamposVacios;
+	
+	boolean dueñoExiste(String dni);
+	
+	DueñoViviendaDTO obtenerUsuario(String dni);
 }

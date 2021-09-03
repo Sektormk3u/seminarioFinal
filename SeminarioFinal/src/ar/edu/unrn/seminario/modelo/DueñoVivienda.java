@@ -23,7 +23,9 @@ public class DueñoVivienda extends Persona {
 	
 	@Override
 	public boolean equals(Object obj) {
-		//hacer logica
+		if (this.obtenerDNI() == obj) {
+			return true;
+		}
 		return false;
 	}
 	
